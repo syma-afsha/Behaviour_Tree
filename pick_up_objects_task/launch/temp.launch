@@ -1,0 +1,42 @@
+<launch>
+    <!-- General Parameters -->
+    <param name="~frame_id" type="string" value="odom" />
+
+    <!-- Environment Setup -->
+    <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+    <arg name="x_pos" default="0.0"/>
+    <arg name="y_pos" default="0.0"/>
+    <arg name="z_pos" default="0.0"/>
+
+    <!-- Gazebo Simulation World -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/turtlebot3_stage_3.world"/>
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>  
+
+    <!-- Robot Description and Spawn -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model turtlebot3_burger -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
+
+    <!-- Robot State Publisher -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+
+    <!-- Object Management and Turtlebot Controller -->
+    <node pkg="pick_up_objects_task" type="manage_objects_node.py" name="manage_objects" args="$(find pick_up_objects_task)" output="screen"/>
+    
+
+    <!-- RViz for Visualization -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find pick_up_objects_task)/config/display.rviz"/>
+    
+    <!-- Laser Scan to Point Cloud and Octomap Server for Online Path Planning -->
+    <node pkg="turtlebot_online_path_planning" type="laser_scan_to_point_cloud_node.py" name="laserscan_to_pointcloud"/>
+    <node pkg="turtlebot_online_path_planning" type="turtlebot_online_path_planning_node.py" name="turtlebot_online_path"/>
+    <node pkg="octomap_server" type="octomap_server_node" name="octomap" output="screen"/>
+    <remap to="/laserscan_to_pointcloud/converted_pc" from="/cloud_in"/>
+
+    
+</launch>

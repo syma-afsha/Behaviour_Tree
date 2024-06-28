@@ -1,0 +1,25 @@
+digraph pastafarianism {
+ordering=out;
+graph [fontname="times-roman"];
+node [fontname="times-roman"];
+edge [fontname="times-roman"];
+"Pick up Behavior" [fillcolor=orange, fontcolor=black, fontsize=9, label="Ⓜ Pick up Behavior", shape=box, style=filled];
+"Get Points" [fillcolor=gray, fontcolor=black, fontsize=9, label="Get Points", shape=ellipse, style=filled];
+"Pick up Behavior" -> "Get Points";
+"Move To Point" [fillcolor=gray, fontcolor=black, fontsize=9, label="Move To Point", shape=ellipse, style=filled];
+"Pick up Behavior" -> "Move To Point";
+"Check Points" [fillcolor=gray, fontcolor=black, fontsize=9, label="Check Points", shape=ellipse, style=filled];
+"Pick up Behavior" -> "Check Points";
+check_object [fillcolor=gray, fontcolor=black, fontsize=9, label=check_object, shape=ellipse, style=filled];
+"Pick up Behavior" -> check_object;
+get_object [fillcolor=gray, fontcolor=black, fontsize=9, label=get_object, shape=ellipse, style=filled];
+"Pick up Behavior" -> get_object;
+"Take Goal Points" [fillcolor=gray, fontcolor=black, fontsize=9, label="Take Goal Points", shape=ellipse, style=filled];
+"Pick up Behavior" -> "Take Goal Points";
+"Move To Goal" [fillcolor=gray, fontcolor=black, fontsize=9, label="Move To Goal", shape=ellipse, style=filled];
+"Pick up Behavior" -> "Move To Goal";
+"Check Goal Points" [fillcolor=gray, fontcolor=black, fontsize=9, label="Check Goal Points", shape=ellipse, style=filled];
+"Pick up Behavior" -> "Check Goal Points";
+let_object [fillcolor=gray, fontcolor=black, fontsize=9, label=let_object, shape=ellipse, style=filled];
+"Pick up Behavior" -> let_object;
+}

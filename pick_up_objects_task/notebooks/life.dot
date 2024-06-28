@@ -1,0 +1,19 @@
+digraph pastafarianism {
+ordering=out;
+graph [fontname="times-roman"];
+node [fontname="times-roman"];
+edge [fontname="times-roman"];
+Life [fillcolor=orange, fontcolor=black, fontsize=9, label="Ⓜ Life", shape=box, style=filled];
+Inverter [fillcolor=ghostwhite, fontcolor=black, fontsize=9, label=Inverter, shape=ellipse, style=filled];
+Life -> Inverter;
+"Busy?" [fillcolor=gray, fontcolor=black, fontsize=9, label="Busy?", shape=ellipse, style=filled];
+Inverter -> "Busy?";
+check_n_beers [fillcolor=orange, fontcolor=black, fontsize=9, label="Ⓜ check_n_beers", shape=box, style=filled];
+Life -> check_n_beers;
+n_beers_lt_2 [fillcolor=gray, fontcolor=black, fontsize=9, label=n_beers_lt_2, shape=ellipse, style=filled];
+check_n_beers -> n_beers_lt_2;
+Timeout [fillcolor=ghostwhite, fontcolor=black, fontsize=9, label=Timeout, shape=ellipse, style=filled];
+check_n_beers -> Timeout;
+"Have a Beer!" [fillcolor=gray, fontcolor=black, fontsize=9, label="Have a Beer!", shape=ellipse, style=filled];
+Timeout -> "Have a Beer!";
+}

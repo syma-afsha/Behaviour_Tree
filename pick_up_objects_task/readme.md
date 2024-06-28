@@ -32,7 +32,7 @@ rosrun pick_up_objects_task pickup_behaviors_node.py
 ## Example of use
 In this lab, we have implemented the following behaviour tree in oder to run the files.
 <div style="text-align: center">
-    <img src='pick_up_objects_task/media/tmpbehavior_tree.png' width='600'/>
+    <img src='./media/tmpbehavior_tree.png' width='600'/>
 </div>
 
 At first, it was tested and run without the intregation of the previous lab which is captured in a video file [here](https://youtu.be/BtH838aQ-kY?si=FODpfT1BSSTDtfYa)
