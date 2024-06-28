@@ -1,7 +1,4 @@
-# Lab 2 HOP "Pickup objects" task using behavior trees
-### Group Members:
-1. Mir Mohibullah Sazid
-2. Syma Afsha
+# HOP "Pickup objects" task using behavior trees
 
 ### Introduction    
 In this lab, we have done picking up objects and place them in a destination location using Py Tree library. This lab is intregated with the previous lab in oder to plan the path of the robot with different obstacles. 
